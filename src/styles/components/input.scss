@@ -2,14 +2,14 @@
 
 .text-input {
   margin: 5px 0 10px 0;
-  padding: 5px 15px;
+  padding: 10px 15px;
   height: 40px;
   width: 100%;
   background-color: $c-text-input;
   border-radius: 8px;
   box-sizing: border-box;
   outline: none;
-  border: none;
+  border: 2px solid transparent;
   resize: vertical;
 
   -webkit-appearance: none;
@@ -17,7 +17,7 @@
   appearance: none;
 
   &:focus {
-    //border: 2px solid $c-text-input-border;
+    border: 2px solid $c-text-input-border;
   }
 }
 
