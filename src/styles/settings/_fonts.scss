@@ -1,0 +1,25 @@
+$font-family-default: Roboto, sans-serif;
+
+* {
+  font-family: $font-family-default;
+}
+
+@mixin font-primary {
+  color: $c-text-primary;
+  font-family: $font-family-default;
+  font-size: 15px;
+}
+
+@mixin font-secondary {
+  color: $c-text-secondary;
+  font-family: $font-family-default;
+  font-size: 15px;
+}
+
+
+
+@mixin font-title {
+  color: $c-text-primary;
+  font-family: $font-family-default;
+  font-size: 18px;
+}

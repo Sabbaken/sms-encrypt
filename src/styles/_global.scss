@@ -1,0 +1,16 @@
+@import "settings/all";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 500px;
+  padding: 6px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: $c-background;
+}
