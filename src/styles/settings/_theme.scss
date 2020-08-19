@@ -5,12 +5,13 @@ $c-text-primary: $c-black;
 $c-text-secondary: $c-gray;
 
 // Buttons
-$c-button-primary: $c-brand;
-$c-button-secondary: $c-white;
+$c-button-primary: $c-gray-lightest;
+$c-button-secondary: $c-gray-light;
 
 // Background
-$c-background: $c-blue-lightest;
+$c-background: $c-white;
 $c-background-card: $c-white;
+$c-text-input: $c-gray-lightest;
 
 // Cards
 $c-card-background: $c-white;

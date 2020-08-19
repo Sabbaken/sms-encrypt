@@ -1,0 +1,14 @@
+@import "../settings/all";
+
+.link {
+  text-decoration: none;
+}
+
+.link-primary {
+  @include font-primary();
+}
+
+
+.link-secondary {
+  @include font-secondary();
+}

@@ -1,0 +1,32 @@
+@import "../settings/all";
+
+.text-input {
+  margin: 5px 0 10px 0;
+  padding: 5px 15px;
+  height: 40px;
+  width: 100%;
+  background-color: $c-text-input;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  resize: vertical;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &:focus {
+    //border: 2px solid $c-text-input-border;
+  }
+}
+
+.text-input-large {
+ height: 50vh;
+}
+
+.label {
+  margin-left: 10px;
+
+  @include font-primary();
+}
