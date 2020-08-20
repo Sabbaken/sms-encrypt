@@ -17,9 +17,11 @@ class MessageCard extends Component {
   constructor(props) {
     super(props);
 
+    let key = localStorage.getItem('key');
+
     this.state = {
       text: '',
-      key: ''
+      key: key
     }
   }
 
@@ -30,6 +32,11 @@ class MessageCard extends Component {
   }
 
   handleEncrypt = (e) => {
+    if (this.state.text === '')
+      return;
+
+    localStorage.setItem('key', this.state.key);
+
     const encrypted = encryptWithAES(this.state.text, this.state.key);
 
     this.setState({
@@ -39,6 +46,9 @@ class MessageCard extends Component {
 
   handleDecrypt = (e) => {
     const decrypted = decryptWithAES(this.state.text, this.state.key);
+
+    if (decrypted === '')
+      return;
 
     this.setState({
       text: decrypted
@@ -80,6 +90,7 @@ class MessageCard extends Component {
             name="key"
             id="key"
             onChange={this.handleChange}
+            value={this.state.key}
           />
         </div>
 
