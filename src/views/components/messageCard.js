@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import Clipboard from 'react-clipboard.js';
 import AES from 'crypto-js/aes';
 import Utf8 from 'crypto-js/enc-utf8';
 
@@ -98,7 +99,9 @@ class MessageCard extends Component {
           <button className="btn btn-primary" onClick={this.handleEncrypt}><img src="./icons/lock.svg" alt="encrypt"/></button>
           <button className="btn btn-primary" onClick={this.handleDecrypt}><img src="./icons/unlock.svg" alt="encrypt"/></button>
           <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/send.svg" alt="encrypt"/></button>
-          <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/clipboard.svg" alt="encrypt"/></button>
+          <Clipboard data-clipboard-text={this.state.text} className="btn btn-primary">
+            <img src="./icons/clipboard.svg" alt="encrypt"/>
+          </Clipboard>
           <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/delete.svg" alt="encrypt"/></button>
         </div>
 
