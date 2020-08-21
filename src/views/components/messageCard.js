@@ -51,6 +51,8 @@ class MessageCard extends Component {
     if (decrypted === '')
       return;
 
+    const encrypted = encryptWithAES(this.state.text, this.state.key);
+
     this.setState({
       text: decrypted
     });
