@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Clipboard from 'react-clipboard.js';
 import AES from 'crypto-js/aes';
 import Utf8 from 'crypto-js/enc-utf8';
+import {Link} from "react-router-dom";
 
 const encryptWithAES = (text, passphrase) => {
   return AES.encrypt(text, passphrase).toString();
@@ -37,7 +38,6 @@ class MessageCard extends Component {
       return;
 
     localStorage.setItem('key', this.state.key);
-
     const encrypted = encryptWithAES(this.state.text, this.state.key);
 
     this.setState({
@@ -51,8 +51,6 @@ class MessageCard extends Component {
     if (decrypted === '')
       return;
 
-    const encrypted = encryptWithAES(this.state.text, this.state.key);
-
     this.setState({
       text: decrypted
     });
@@ -64,51 +62,52 @@ class MessageCard extends Component {
     });
   }
 
-  handleCopy = (e) => {
-    this.setState({
-      text: ''
-    });
-  }
-
   render() {
     return (
-      <div className="card">
-        <p className="card__title">sms-encrypt</p>
-
+      <div className="card message-card--wrapper">
         <div>
-          <p className="label">Текст</p>
-          <textarea
-            className="text-input text-input-large"
-            name="text"
-            id="text"
-            onChange={this.handleChange}
-            value={this.state.text}
-          />
-        </div>
+          <p className="card__title">sms-encrypt</p>
 
-        <div>
-          <p className="label">Ключ</p>
-          <textarea
-            className="text-input"
-            name="key"
-            id="key"
-            onChange={this.handleChange}
-            value={this.state.key}
-          />
-        </div>
+          <div>
+            <p className="label">Текст</p>
+            <textarea
+              className="text-input text-input-large"
+              name="text"
+              id="text"
+              onChange={this.handleChange}
+              value={this.state.text}
+            />
+          </div>
 
-        <div className="btn-group">
-          <button className="btn btn-primary" onClick={this.handleEncrypt}><img src="./icons/lock.svg" alt="encrypt"/></button>
-          <button className="btn btn-primary" onClick={this.handleDecrypt}><img src="./icons/unlock.svg" alt="encrypt"/></button>
-          <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/send.svg" alt="encrypt"/></button>
-          <Clipboard data-clipboard-text={this.state.text} className="btn btn-primary">
-            <img src="./icons/clipboard.svg" alt="encrypt"/>
-          </Clipboard>
-          <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/delete.svg" alt="encrypt"/></button>
-        </div>
+          <div>
+            <p className="label">Ключ</p>
+            <textarea
+              className="text-input"
+              name="key"
+              id="key"
+              onChange={this.handleChange}
+              value={this.state.key}
+            />
+          </div>
 
-        <div>
-          {/*<a className="link link-secondary" href="/#">Добавить на главный экран</a>*/}
+          <div className="btn-group">
+            <button className="btn btn-primary" onClick={this.handleEncrypt}><img src="./icons/lock.svg" alt="encrypt"/>
+            </button>
+            <button className="btn btn-primary" onClick={this.handleDecrypt}><img src="./icons/unlock.svg"
+                                                                                  alt="encrypt"/></button>
+            <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/send.svg" alt="encrypt"/>
+            </button>
+            <Clipboard data-clipboard-text={this.state.text} className="btn btn-primary">
+              <img src="./icons/clipboard.svg" alt="encrypt"/>
+            </Clipboard>
+            <button className="btn btn-primary" onClick={this.handleClear}><img src="./icons/delete.svg" alt="encrypt"/>
+            </button>
+          </div>
+        </div>
+        <div className="message-card--links">
+          <Link className="link link-secondary" to="/use">Как использовать</Link>
+          <br/>
+          <Link className="link link-secondary" to="/install">Добавить на главный экран</Link>
         </div>
       </div>
     );
